@@ -1,0 +1,178 @@
+/* src/styles/video-manage.css */
+/* 视频管理响应式优化 */
+
+/* 电脑屏幕优化 (≥ 1024px) */
+@media (min-width: 1024px) {
+  .video-manage-desktop {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  /* 表格优化 */
+  .video-table-desktop {
+    font-size: 13px;
+    
+    /* 增强表格行悬停效果 */
+    .el-table__row {
+      &:hover {
+        .column-adaptive {
+          color: #25F4EE !important;
+        }
+        
+        .column-compact {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  
+  .video-table-desktop .el-table__cell {
+    padding: 10px 8px;
+  }
+  
+  /* 确保表格列宽合理 */
+  .column-adaptive {
+    min-width: 120px;
+    max-width: 200px;
+  }
+  
+  .column-compact {
+    width: 100px;
+    min-width: 100px;
+    transition: transform var(--dy-transition-fast);
+  }
+  
+  /* 操作按钮组悬停效果增强 */
+  .action-buttons-desktop {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+  }
+  
+  .action-buttons-desktop .el-button {
+    padding: 6px 10px;
+    font-size: 12px;
+    
+    &:hover {
+      transform: translateY(-1px) !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    &:active {
+      transform: translateY(0) !important;
+    }
+  }
+}
+
+/* 平板优化 (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .video-manage-tablet {
+    padding: 16px;
+  }
+  
+  /* 隐藏次要列 */
+  .hide-on-tablet {
+    display: none !important;
+  }
+  
+  /* 表格字体缩小 */
+  .video-table-tablet {
+    font-size: 12px;
+  }
+  
+  /* 按钮自适应悬停效果 */
+  .btn-tablet {
+    padding: 8px 12px;
+    font-size: 12px;
+    
+    &:hover {
+      background-color: rgba(37, 244, 238, 0.1) !important;
+    }
+  }
+}
+
+/* 表格滚动优化 */
+.video-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.video-table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.video-table-scroll::-webkit-scrollbar-track {
+  background: var(--dy-bg-container);
+}
+
+.video-table-scroll::-webkit-scrollbar-thumb {
+  background: var(--dy-text-tertiary);
+  border-radius: 4px;
+  transition: var(--dy-transition-fast);
+  
+  &:hover {
+    background: var(--dy-text-secondary);
+    cursor: pointer;
+  }
+}
+
+/* 视频封面自适应悬停效果增强 */
+.video-cover-responsive {
+  width: 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--dy-bg-elevated);
+  transition: var(--dy-transition-normal);
+  
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--dy-transition-normal);
+  }
+}
+
+/* 状态标签响应式悬停效果 */
+.status-tag-responsive {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  transition: var(--dy-transition-fast);
+  
+  &:hover {
+    opacity: var(--dy-hover-opacity);
+    transform: var(--dy-hover-transform);
+  }
+}
+
+/* 操作按钮响应式悬停效果 */
+.action-btn-responsive {
+  min-width: 0;
+  padding: 6px;
+  margin: 0 2px;
+  transition: var(--dy-transition-fast);
+  
+  &:hover:not(:disabled) {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 768px) {
+  .action-btn-responsive {
+    padding: 4px;
+    margin: 0 1px;
+  }
+}

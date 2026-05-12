@@ -1,0 +1,186 @@
+/* src/styles/tokens.css */
+:root {
+  /* 仅保留供非Less场景使用的CSS变量，Less中不再依赖 */
+  --dy-bg-body: #121212;
+  --dy-bg-container: #161618;
+  --dy-bg-elevated: #252526;
+  --dy-bg-hover: #2D2D2D;
+  --dy-brand-red: #FE2C55;
+  --dy-brand-cyan: #25F4EE;
+  --dy-text-primary: rgba(255, 255, 255, 1);
+  --dy-text-secondary: rgba(255, 255, 255, 0.88);
+  --dy-text-tertiary: rgba(255, 255, 255, 0.55);
+  --dy-border-default: 1px solid rgba(255, 255, 255, 0.08);
+  /* 新增：权限相关样式变量 */
+  --dy-admin-warning: #FF9500;
+  --dy-admin-success: #00C864;
+  --dy-admin-danger: #FF3B30;
+   /* 新增：悬停相关变量 */
+  --dy-hover-bg-primary: rgba(37, 244, 238, 0.08);    /* 主要悬停背景色 */
+  --dy-hover-bg-secondary: rgba(254, 44, 85, 0.08);  /* 次要悬停背景色 */
+  --dy-hover-bg-light: rgba(255, 255, 255, 0.05);    /* 轻度悬停背景色 */
+  
+  /* 新增：交互状态透明度 */
+  --dy-hover-opacity: 0.9;
+  --dy-active-opacity: 0.8;
+  
+  /* 新增：动画过渡时间 */
+  --dy-transition-fast: 0.2s ease;
+  --dy-transition-normal: 0.3s ease;
+  --dy-transition-slow: 0.5s ease;
+  
+  /* 新增：悬停效果 */
+  --dy-hover-transform: translateY(-2px);
+  --dy-active-transform: translateY(0);
+  --dy-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* 标签专用颜色（增强对比度） */
+  --dy-tag-admin-bg: rgba(254, 44, 85, 0.3);
+  --dy-tag-admin-text: #FF6B8B;
+  --dy-tag-user-bg: rgba(103, 194, 58, 0.3);
+  --dy-tag-user-text: #85D475;
+  --dy-tag-active-bg: rgba(103, 194, 58, 0.3);
+  --dy-tag-active-text: #85D475;
+  --dy-tag-disabled-bg: rgba(144, 147, 153, 0.3);
+  --dy-tag-disabled-text: #A8ABB2;
+  --dy-tag-warning-bg: rgba(230, 162, 60, 0.3);
+  --dy-tag-warning-text: #E6C25C;
+  --dy-tag-success-bg: rgba(103, 194, 58, 0.3);
+  --dy-tag-success-text: #85D475;
+  --dy-tag-danger-bg: rgba(245, 108, 108, 0.3);
+  --dy-tag-danger-text: #FF8A8A;
+  --dy-tag-info-bg: rgba(144, 147, 153, 0.3);
+  --dy-tag-info-text: #A8ABB2;
+  
+  /* 分类标签颜色 */
+  --dy-tag-life-bg: rgba(64, 158, 255, 0.3);
+  --dy-tag-life-text: #80C5FF;
+  --dy-tag-entertainment-bg: rgba(156, 39, 176, 0.3);
+  --dy-tag-entertainment-text: #C678DD;
+  --dy-tag-knowledge-bg: rgba(255, 152, 0, 0.3);
+  --dy-tag-knowledge-text: #FFB74D;
+  --dy-tag-game-bg: rgba(233, 30, 99, 0.3);
+  --dy-tag-game-text: #F48FB1;
+  --dy-tag-music-bg: rgba(0, 188, 212, 0.3);
+  --dy-tag-music-text: #80DEEA;
+
+}
+
+/* 全局重置：确保Element Plus组件适配深色模式 */
+body {
+  margin: 0;
+  padding: 0;
+  background: #121212; /* 直接写死，避免依赖变量 */
+  color: rgba(255, 255, 255, 1);
+  font-family: "PingFang SC", "HarmonyOS Sans", "Microsoft YaHei", sans-serif;
+ /* 设置全局文本选择背景色 */
+  ::selection {
+    background: rgba(254, 44, 85, 0.3);
+    color: white;
+  }
+}
+
+/* 覆盖Element Plus默认样式 */
+.el-message {
+  background: #252526 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* 新增：Element Plus表格/树形组件深色适配 */
+.el-table, .el-tree {
+  --el-fill-color-blank: #161618 !important;
+  --el-fill-color-lighter: #252526 !important;
+/* 增强表格悬停效果 */
+  .el-table__row {
+    &:hover {
+      --el-table-row-hover-bg-color: var(--dy-hover-bg-primary) !important;
+    }
+  }
+}
+
+.el-tag {
+  --el-tag-text-color: #fff !important;
+ /* 标签悬停效果 */
+  &:hover {
+    opacity: var(--dy-hover-opacity);
+    transform: var(--dy-hover-transform);
+    transition: var(--dy-transition-fast);
+  }
+}
+
+/* 按钮悬停效果增强 */
+.el-button {
+  transition: var(--dy-transition-fast);
+  
+  &:hover:not(:disabled) {
+    transform: var(--dy-hover-transform);
+    box-shadow: var(--dy-hover-shadow);
+  }
+  
+  &:active:not(:disabled) {
+    transform: var(--dy-active-transform);
+  }
+}
+
+/* 输入框悬停效果 */
+.el-input {
+  .el-input__wrapper {
+    transition: var(--dy-transition-fast);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-color: rgba(37, 244, 238, 0.3) !important;
+    }
+    
+    &:focus-within {
+      border-color: #25F4EE !important;
+      box-shadow: 0 0 0 1px rgba(37, 244, 238, 0.2) !important;
+    }
+  }
+}
+
+/* 链接悬停效果 */
+a, .el-link {
+  transition: var(--dy-transition-fast);
+  
+  &:hover {
+    color: #25F4EE !important;
+  }
+}
+
+/* 禁用状态样式 */
+.el-button.is-disabled,
+.el-input.is-disabled .el-input__inner {
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+/* 卡片悬停效果 */
+.el-card {
+  transition: var(--dy-transition-normal);
+  
+  &:hover {
+    border-color: rgba(37, 244, 238, 0.2) !important;
+    transform: var(--dy-hover-transform);
+    box-shadow: var(--dy-hover-shadow) !important;
+  }
+}
+
+/* 全局标签样式增强（深色主题适配） */
+.el-tag {
+  --el-tag-border-color: transparent;
+  font-weight: 500;
+  
+  /* 确保文字和背景的对比度 */
+  &.el-tag--dark {
+    --el-tag-text-color: rgba(255, 255, 255, 0.95);
+  }
+  
+  /* 悬停效果增强 */
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+}
